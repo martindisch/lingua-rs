@@ -67,6 +67,7 @@ whatlang = "0.13.0"
 
 [features]
 default = ["english", "french", "german", "italian"]
+without-rayon = []
 english = ["lingua-english-language-model"]
 french = ["lingua-french-language-model"]
 german = ["lingua-german-language-model"]

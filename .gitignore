@@ -50,3 +50,4 @@ Desktop.ini
 ehthumbs.db
 
 src/main.rs
+codegen.rs

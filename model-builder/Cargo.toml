@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-phf = { version = "0.10.1", default-features = false }
+phf_codegen = "0.10.0"

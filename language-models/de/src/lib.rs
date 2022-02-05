@@ -16,6 +16,9 @@
 
 use include_dir::{include_dir, Dir};
 
+// TODO: could this be done better by properly including a submodule from src?
+include!("../codegen.rs");
+
 pub const GERMAN_MODELS_DIRECTORY: Dir = include_dir!("models");
 
 pub const GERMAN_TESTDATA_DIRECTORY: Dir = include_dir!("testdata");

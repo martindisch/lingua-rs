@@ -227,20 +227,6 @@ mod tests {
     }
 
     #[test]
-    fn assert_detector_can_be_built_from_blacklist() {
-        let builder = LanguageDetectorBuilder::from_all_languages_without(&[
-            Language::Turkish,
-            Language::Romanian,
-        ]);
-        let expected_languages = Language::all()
-            .difference(&hashset!(Language::Turkish, Language::Romanian))
-            .cloned()
-            .collect::<HashSet<Language>>();
-
-        assert_eq!(builder.languages, expected_languages);
-    }
-
-    #[test]
     #[should_panic(expected = "LanguageDetector needs at least 2 languages to choose from")]
     fn assert_detector_cannot_be_built_from_too_long_blacklist() {
         let languages = Language::all()
@@ -269,31 +255,9 @@ mod tests {
     }
 
     #[test]
-    fn assert_detector_can_be_built_from_iso_639_1_codes() {
-        let builder =
-            LanguageDetectorBuilder::from_iso_codes_639_1(&[IsoCode639_1::DE, IsoCode639_1::SV]);
-
-        assert_eq!(
-            builder.languages,
-            hashset!(Language::German, Language::Swedish)
-        );
-    }
-
-    #[test]
     #[should_panic(expected = "LanguageDetector needs at least 2 languages to choose from")]
     fn assert_detector_cannot_be_built_from_too_few_iso_639_1_codes() {
         LanguageDetectorBuilder::from_iso_codes_639_1(&[IsoCode639_1::DE]);
-    }
-
-    #[test]
-    fn assert_detector_can_be_built_from_iso_639_3_codes() {
-        let builder =
-            LanguageDetectorBuilder::from_iso_codes_639_3(&[IsoCode639_3::DEU, IsoCode639_3::SWE]);
-
-        assert_eq!(
-            builder.languages,
-            hashset!(Language::German, Language::Swedish)
-        );
     }
 
     #[test]

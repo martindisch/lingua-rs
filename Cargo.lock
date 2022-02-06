@@ -525,7 +525,11 @@ dependencies = [
 name = "model-builder"
 version = "0.1.0"
 dependencies = [
+ "common",
  "phf_codegen",
+ "serde",
+ "serde_json",
+ "zip",
 ]
 
 [[package]]

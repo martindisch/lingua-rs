@@ -15,8 +15,8 @@
  */
 
 use crate::detector::LanguageDetector;
-use crate::isocode::{IsoCode639_1, IsoCode639_3};
 use crate::language::Language;
+use common::isocode::{IsoCode639_1, IsoCode639_3};
 use std::collections::HashSet;
 
 const MISSING_LANGUAGE_MESSAGE: &str = "LanguageDetector needs at least 2 languages to choose from";

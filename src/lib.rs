@@ -274,15 +274,14 @@ mod builder;
 mod constant;
 mod detector;
 mod fraction;
-mod isocode;
 mod json;
 mod language;
 mod model;
 mod writer;
 
 pub use builder::LanguageDetectorBuilder;
+pub use common::isocode::{IsoCode639_1, IsoCode639_3};
 pub use detector::LanguageDetector;
-pub use isocode::{IsoCode639_1, IsoCode639_3};
 pub use language::Language;
 pub use writer::{LanguageModelFilesWriter, TestDataFilesWriter};
 

@@ -15,7 +15,7 @@
  */
 
 use crate::alphabet::Alphabet;
-use crate::isocode::{IsoCode639_1, IsoCode639_3};
+use common::isocode::{IsoCode639_1, IsoCode639_3};
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 use std::str::FromStr;

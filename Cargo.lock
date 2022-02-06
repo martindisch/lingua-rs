@@ -125,6 +125,8 @@ dependencies = [
  "itertools",
  "serde",
  "serde_json",
+ "strum",
+ "strum_macros",
 ]
 
 [[package]]

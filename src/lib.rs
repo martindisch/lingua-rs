@@ -272,7 +272,6 @@ extern crate maplit;
 mod builder;
 mod constant;
 mod detector;
-mod fraction;
 mod json;
 mod model;
 mod writer;

@@ -15,7 +15,7 @@
  */
 
 use crate::constant::LETTER;
-use crate::fraction::Fraction;
+use common::fraction::Fraction;
 use common::language::Language;
 use common::ngram::Ngram;
 use itertools::Itertools;

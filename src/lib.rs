@@ -269,20 +269,18 @@
 #[macro_use]
 extern crate maplit;
 
-mod alphabet;
 mod builder;
 mod constant;
 mod detector;
 mod fraction;
 mod json;
-mod language;
 mod model;
 mod writer;
 
 pub use builder::LanguageDetectorBuilder;
 pub use common::isocode::{IsoCode639_1, IsoCode639_3};
+pub use common::language::Language;
 pub use detector::LanguageDetector;
-pub use language::Language;
 pub use writer::{LanguageModelFilesWriter, TestDataFilesWriter};
 
 #[cfg(test)]

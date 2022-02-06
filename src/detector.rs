@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-use crate::alphabet::Alphabet;
 use crate::constant::{
     CHARS_TO_LANGUAGES_MAPPING, JAPANESE_CHARACTER_SET, LANGUAGES_SUPPORTING_LOGOGRAMS,
     MULTIPLE_WHITESPACE, NO_LETTER, NUMBERS, PUNCTUATION,
 };
 use crate::json::load_json;
-use crate::language::Language;
 use crate::model::TrainingDataLanguageModel;
 use crate::model::{LanguageModel, TestDataLanguageModel};
+use common::alphabet::Alphabet;
+use common::language::Language;
 use common::ngram::Ngram;
 use itertools::Itertools;
 use once_cell::sync::Lazy;
@@ -635,8 +635,8 @@ impl LanguageDetector {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::language::Language::*;
     use crate::model::MockLanguageModel;
+    use common::language::Language::*;
     use float_cmp::approx_eq;
     use once_cell::sync::OnceCell;
     use rstest::*;

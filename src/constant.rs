@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-use crate::language::Language;
+use common::language::Language;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use std::collections::{HashMap, HashSet};

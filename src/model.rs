@@ -16,7 +16,7 @@
 
 use crate::constant::LETTER;
 use crate::fraction::Fraction;
-use crate::language::Language;
+use common::language::Language;
 use common::ngram::Ngram;
 use itertools::Itertools;
 use regex::Regex;

@@ -123,6 +123,9 @@ name = "common"
 version = "0.1.0"
 dependencies = [
  "itertools",
+ "maplit",
+ "once_cell",
+ "regex 1.5.4",
  "serde",
  "serde_json",
  "strum",

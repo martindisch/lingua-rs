@@ -127,17 +127,6 @@
 //!
 //! ### 7.1 Basic usage
 //!
-//! ```
-//! use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
-//! use lingua::Language::{English, French, German, Spanish};
-//!
-//! let languages = vec![English, French, German, Spanish];
-//! let detector: LanguageDetector = LanguageDetectorBuilder::from_languages(&languages).build();
-//! let detected_language: Option<Language> = detector.detect_language_of("languages are awesome");
-//!
-//! assert_eq!(detected_language, Some(English));
-//! ```
-//!
 //! ### 7.2 Minimum relative distance
 //!
 //! By default, *Lingua* returns the most likely language for a given input text. However, there are
@@ -146,18 +135,6 @@
 //! French which might be wrong in the given context. For cases like that, it is possible to
 //! specify a minimum relative distance that the logarithmized and summed up probabilities for
 //! each possible language have to satisfy. It can be stated in the following way:
-//!
-//! ```
-//! use lingua::LanguageDetectorBuilder;
-//! use lingua::Language::{English, French, German, Spanish};
-//!
-//! let detector = LanguageDetectorBuilder::from_languages(&[English, French, German, Spanish])
-//!     .with_minimum_relative_distance(0.25) // minimum: 0.00 maximum: 0.99 default: 0.00
-//!     .build();
-//! let detected_language = detector.detect_language_of("languages are awesome");
-//!
-//! assert_eq!(detected_language, None);
-//! ```
 //!
 //! Be aware that the distance between the language probabilities is dependent on the length of the
 //! input text. The longer the input text, the larger the distance between the languages. So if you
@@ -171,35 +148,6 @@
 //! Knowing about the most likely language is nice but how reliable is the computed likelihood?
 //! And how less likely are the other examined languages in comparison to the most likely one?
 //! These questions can be answered as well:
-//!
-//! ```
-//! use lingua::{LanguageDetectorBuilder, Language};
-//! use lingua::Language::{English, French, German, Spanish};
-//! use float_cmp::approx_eq;
-//!
-//! let languages = vec![English, French, German, Spanish];
-//! let detector = LanguageDetectorBuilder::from_languages(&languages).build();
-//! let confidence_values: Vec<(Language, f64)> = detector.compute_language_confidence_values(
-//!     "languages are awesome"
-//! );
-//!
-//! // The more readable version of the assertions below:
-//! // assert_eq!(
-//! //     confidence_values,
-//! //     vec![(English, 1.0), (French, 0.79), (German, 0.75), (Spanish, 0.72)]
-//! // );
-//!
-//! assert_eq!(confidence_values[0], (English, 1.0_f64));
-//!
-//! assert_eq!(confidence_values[1].0, French);
-//! assert!(approx_eq!(f64, confidence_values[1].1, 0.7917282993701181, ulps = 2));
-//!
-//! assert_eq!(confidence_values[2].0, German);
-//! assert!(approx_eq!(f64, confidence_values[2].1, 0.7532048914992281, ulps = 2));
-//!
-//! assert_eq!(confidence_values[3].0, Spanish);
-//! assert!(approx_eq!(f64, confidence_values[3].1, 0.7229637749926444, ulps = 2));
-//! ```
 //!
 //! In the example above, a vector of all possible languages is returned, sorted by their confidence
 //! value in descending order. The values that the detector computes are part of a **relative**
@@ -238,33 +186,6 @@
 //! definitely not written in Latin, for instance (what a surprise :-). The detection accuracy can
 //! become better in such cases if you exclude certain languages from the decision process or just
 //! explicitly include relevant languages:
-//!
-//! ```
-//! use lingua::{LanguageDetectorBuilder, Language, IsoCode639_1, IsoCode639_3};
-//!
-//! // Including all languages available in the library
-//! // consumes approximately 2GB of memory and might
-//! // lead to slow runtime performance.
-//! LanguageDetectorBuilder::from_all_languages();
-//!
-//! // Include only languages that are not yet extinct (= currently excludes Latin).
-//! LanguageDetectorBuilder::from_all_spoken_languages();
-//!
-//! // Include only languages written with Cyrillic script.
-//! LanguageDetectorBuilder::from_all_languages_with_cyrillic_script();
-//!
-//! // Exclude only the Spanish language from the decision algorithm.
-//! LanguageDetectorBuilder::from_all_languages_without(&[Language::Spanish]);
-//!
-//! // Only decide between English and German.
-//! LanguageDetectorBuilder::from_languages(&[Language::English, Language::German]);
-//!
-//! // Select languages by ISO 639-1 code.
-//! LanguageDetectorBuilder::from_iso_codes_639_1(&[IsoCode639_1::EN, IsoCode639_1::DE]);
-//!
-//! // Select languages by ISO 639-3 code.
-//! LanguageDetectorBuilder::from_iso_codes_639_3(&[IsoCode639_3::ENG, IsoCode639_3::DEU]);
-//! ```
 
 #[macro_use]
 extern crate maplit;

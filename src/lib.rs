@@ -199,7 +199,6 @@ mod isocode;
 mod json;
 mod language;
 mod model;
-mod ngram;
 mod writer;
 
 pub use builder::LanguageDetectorBuilder;
